@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiceRoll - Todo List</title>
+    <!-- Estilos y Favicon  -->
+    <link rel="stylesheet" href="/frontend/assets/css/styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/frontend/assets/imagenes/favicon-dados-b.png"
+    />
+    <!-- &#128465 -> Basurero y &#10003 -> Check mark  -->
+  </head>
+  <body>
+    <main class="contenedor-principal">
+      <h1>Todo List</h1>
+      <input
+        id="ingresar-tarea"
+        type="text"
+        placeholder="Ingrese una tarea."
+        maxlength="40"
+      />
+      <button class="agregar" type="submit">Agregar tarea</button>
+      <!-- <button class="borrar" type="submit">&#128465</button> -->
+      <!-- <button class="completar" type="submit">&#10003</button> -->
+      <div id="lista-tareas">
+        <!-- tareas -->
+      </div>
+    </main>
+    <script src="/frontend/assets/js/scripts.js"></script>
+  </body>
+</html>
