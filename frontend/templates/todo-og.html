@@ -1,0 +1,17 @@
+{% extends 'base-2.html' %} {% block head %} {% endblock %} {% block body %}
+<main class="contenedor-principal">
+  <h1>Todo List</h1>
+  <input
+    id="ingresar-tarea"
+    type="text"
+    placeholder="Ingrese una tarea."
+    maxlength="40"
+  />
+  <button class="agregar" type="submit">Agregar tarea</button>
+  <!-- <button class="borrar" type="submit">&#128465</button> -->
+  <!-- <button class="completar" type="submit">&#10003</button> -->
+  <div id="lista-tareas">
+    <!-- tareas -->
+  </div>
+</main>
+{% endblock %}

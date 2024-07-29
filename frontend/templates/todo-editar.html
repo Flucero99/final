@@ -1,0 +1,65 @@
+<!-- prettier-ignore -->
+{% extends 'base-1.html' %} 
+{% block title %} Perfil - DiceRoll {% endblock %} 
+{% block head %} {% endblock %}
+<!-- -> Nav <- -->
+{% block nav %}
+<ul>
+  <!-- <li><a href="/todo">Todo List</a></li> -->
+  <li><a href="{{ url_for('root') }}">Home</a></li>
+  <li>
+    <a href="{{ url_for('todo_usuario', usuario=item_usuario) }}">Todo List</a>
+  </li>
+</ul>
+{% endblock %}
+<!-- -> /Nav <- -->
+{% block contenedor_central %}
+<!-- -> Main <- -->
+<main>
+  <div id="contenedor-generico">
+    <h1>Editar Tarea</h1>
+    <div id="contenedor-form">
+      <!-- <form
+        action="{{ url_for('editar_tarea', usuario=item_usuario, id=item_tarea.id) }}"
+        method="POST"
+      >
+        <div id="tarea"> -->
+      <!-- <p>{{ item_tarea.contenido }}</p> -->
+      <!-- </div>
+        <input
+          class="form-usuario"
+          type="text"
+          placeholder="Nueva tarea."
+          style="width: 90%"
+        />
+        <input id="submit" class="form-boton" type="submit" value="Editar" />
+      </form> -->
+
+      <form method="POST" class="form-tarea">
+        {{ item_form.hidden_tag() }}
+        <div id="tarea">
+          <p>{{ item_tarea.contenido }}</p>
+        </div>
+        <!-- prettier-ignore -->
+        {{ item_form.tarea (id="ingresar-tarea", class="form-usuario", placeholder="Ingrese una tarea.", maxlength="80", style="width:90%;") }}    
+        {{ item_form.submit(id="submit", class="form-boton", value="Editar")}}
+      </form>
+    </div>
+    <!-- <h1 id="prueba-titulo">Perfil</h1>
+    <label id="prueba-label" for="input-nombre">
+      <h2>Nombre:</h2>
+    </label>
+    <div id="prueba-input">
+      <input
+        id="input-nombre"
+        type="text"
+        value="{{ item_usuario }}"
+        placeholder="Juan Pedro"
+        maxlength="30"
+        style="text-align: center; width: 90%; height: 18%"
+      />
+    </div> -->
+  </div>
+</main>
+<!-- -> /Main <- -->
+{% endblock %}

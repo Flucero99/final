@@ -1,0 +1,44 @@
+<!-- prettier-ignore -->
+{% extends 'base-1.html' %} 
+{% block title %} Registrar - DiceRoll {% endblock %} 
+{% block head %} {% endblock %}
+<!-- -> Nav <- -->
+{% block nav %}
+<ul>
+  <!-- <li><a href="/todo">Todo List</a></li> -->
+  <li><a href="{{ url_for('root') }}">Home</a></li>
+</ul>
+{% endblock %}
+<!-- -> /Nav <- -->
+{% block contenedor_central %}
+<!-- -> Main <- -->
+<main>
+  <div id="contenedor-generico">
+    <h1>Registrar</h1>
+    <div id="contenedor-form">
+      <form method="POST" class="form-registro">
+        {{ item_form.hidden_tag() }}
+        <h1>{{ item_form.nombre.label() }}</h1>
+        <!-- prettier-ignore -->
+        {{ item_form.nombre(class="form-usuario", placeholder="Nombre de Usuario", maxlength="15") }}
+        
+        {{ item_form.submit(class="form-boton")}}
+      </form>
+    </div>
+    <!-- <h1 id="prueba-titulo">Crear Usuario</h1>
+    <label id="prueba-label" for="input-nombre">
+      <h2>Nombre:</h2>
+    </label>
+    <div id="prueba-input">
+      <input
+      id="input-nombre"
+      type="text"
+      placeholder="Juan Pedro"
+      maxlength="30"
+      style="text-align: center; width: 90%; height: 18%"
+      />
+    </div> -->
+  </div>
+</main>
+<!-- -> /Main <- -->
+{% endblock %}

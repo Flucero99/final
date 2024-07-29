@@ -1,17 +1,106 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
-<main class="contenedor-principal">
-  <h1>Todo List</h1>
-  <input
-    id="ingresar-tarea"
-    type="text"
-    placeholder="Ingrese una tarea."
-    maxlength="40"
-  />
-  <button class="agregar" type="submit">Agregar tarea</button>
-  <!-- <button class="borrar" type="submit">&#128465</button> -->
-  <!-- <button class="completar" type="submit">&#10003</button> -->
-  <div id="lista-tareas">
-    <!-- tareas -->
+<!-- prettier-ignore -->
+{% extends 'base-1.html' %} 
+{% block title %} Todo List - {{ item_usuario }} - DiceRoll {% endblock %}
+{% block head %} {% endblock %}
+<!-- -> Nav <- -->
+{% block nav %}
+<ul>
+  <!-- <li><a href="/">Inicio</a></li> -->
+  <!-- <li><a href="#">Crear Usuario</a></li> -->
+  <li><a id="iniciar-sesion" href="#">Usuarios</a></li>
+  <li><a href="{{ url_for('root') }}">Home</a></li>
+  <!-- <li><a href="{{ url_for('perfil') }}/{{ item_usuario }}">Perfil</a></li> -->
+  <li>
+    <a href="{{ url_for('perfil_usuario', usuario=item_usuario) }}">Perfil</a>
+  </li>
+</ul>
+{% endblock %}
+<!-- -> /Nav <- -->
+{% block contenedor_central %}
+<!-- -> Aside <- -->
+<aside class="colapsado">
+  <h2>Usuarios</h2>
+  <ul>
+    {% for persona in item_usuarios %} {% if item_usuario == persona['nombre']%}
+    <li>
+      <a href="/todo/{{ persona['nombre'] }}"
+        >&gt; {{ persona["nombre"] }} &lt;</a
+      >
+    </li>
+    {% else %}
+    <li>
+      <a href="/todo/{{ persona['nombre'] }}">{{ persona["nombre"] }}</a>
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+</aside>
+<!-- -> /Aside <- -->
+<!-- -> Main <- -->
+<main>
+  <div class="nada-1 colapsado"></div>
+  <!-- -> Todo <- -->
+  <div id="contenedor-todo">
+    <h1>Todo List</h1>
+    <form method="POST" class="form-tarea">
+      {{ item_form.hidden_tag() }}
+      <!-- prettier-ignore -->
+      {{ item_form.tarea (id="ingresar-tarea", placeholder="Ingrese una tarea.", maxlength="80") }}
+      
+      {{ item_form.submit(id="boton-agregar")}}
+    </form>
+    <!-- <input
+      id="ingresar-tarea"
+      type="text"
+      placeholder="Ingrese una tarea."
+      maxlength="40"
+    />
+    <button class="agregar" type="submit">Agregar tarea</button> -->
+    <!-- <button class="completar" type="submit">&#10003;</button> -->
+    <!-- <button class="borrar" type="submit">&#128465;</button> -->
+    <div id="lista-tareas">
+      {% for tarea in item_tareas %}
+      <div class="tarea">
+        <p>{{ tarea['contenido'] }}</p>
+        <button type="submit" class="completar">&#10003;</button>
+        <form
+          action=" {{ url_for('editar_tarea', usuario=item_usuario, id=tarea['id']) }}"
+          method="GET"
+        >
+          <input type="submit" id="editar" value="&#9998;" />
+        </form>
+        <form
+          action=" {{ url_for('eliminar_tarea', usuario=item_usuario, id=tarea['id']) }}"
+          method="POST"
+        >
+          <input type="submit" id="borrar" value="&#128465;" />
+        </form>
+        <!-- <button type="submit" class="editar">&#9998;</button> -->
+        <!-- <button type="submit" class="borrar">&#128465;</button> -->
+      </div>
+      {% endfor %}
+      <!-- tareas -->
+      <!-- <div class="tarea">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                voluptate perferendis perspiciatis quam? Perferendis aperiam
+                accusantium illo natus, ut non nihil, cupiditate molestias
+                dolores blanditiis praesentium sed pariatur hic minima commodi
+                fuga maxime temporibus ullam facilis voluptates corporis nisi
+                necessitatibus, laboriosam vero! Itaque ex ipsam enim tenetur,
+                quae natus facere!
+              </p>
+              <button type="submit" class="completar">&#10003;</button>
+              <button type="submit" class="borrar">&#128465;</button>
+            </div>
+            <div class="tarea">
+              <p>Hola.</p>
+              <button type="submit" class="completar">&#10003;</button>
+              <button type="submit" class="borrar">&#128465;</button>
+            </div> -->
+    </div>
   </div>
+  <!-- -> /Todo <- -->
+  <div class="nada-2 colapsado"></div>
 </main>
+<!-- -> /Main <- -->
 {% endblock %}

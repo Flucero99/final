@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>DiceRoll - Todo List</title> -->
+    <!-- Estilos y Favicon  -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles-todo.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{{ url_for('static', filename='imagenes/favicon-dados-b.png') }}"
+    />
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %} -->
+      <!-- {% if messages %} -->
+        <!-- {% for message in messages %} -->
+          <!-- <p> {{ mesagge }} </p> -->
+        <!-- prettier-ignore -->
+        <!-- {% endfor %} -->
+      <!-- {% endif %} -->
+    <!-- {% endwith%} -->
+    <div class="contenedor-principal">
+      <!-- -> Header <- -->
+      <header>
+        <!-- <div class="nada"></div> -->
+        <!-- <h1 class="costados"><a href="/home">Home</a></h1> -->
+        <h1 class="centro">DiceRoll</h1>
+        <!-- <h1 class="costados">
+          <a href="/usuario/{{ item_usuario }}">Perfil</a>
+        </h1> -->
+      </header>
+      <!-- -> /Header <- -->
+      <nav>{% block nav %} {% endblock %}</nav>
+      <!-- -> Contenedor-Central -> main y aside <- -->
+      <div class="contenedor-central">
+        {% block contenedor_central %} {% endblock %}
+      </div>
+      <!-- -> /Contenedor-Central <- -->
+      <footer><h4>&#9856; Lucero Cisneros Franco Manuel &#9856;</h4></footer>
+    </div>
+    {% block body %} {% endblock %}
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/scripts.js') }}"
+    ></script>
+  </body>
+</html>

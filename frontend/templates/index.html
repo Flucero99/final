@@ -1,3 +1,30 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
-<h1>Plantilla loco</h1>
+<!-- prettier-ignore -->
+{% extends 'base-1.html' %} 
+{% block title %} Home - DiceRoll {% endblock %} 
+{% block head %} {% endblock %}
+<!-- -> Nav <- -->
+{% block nav %}
+<ul>
+  <!-- <li><a href="/todo">Todo List</a></li> -->
+  <li><a id="iniciar-sesion" href="#">Usuarios</a></li>
+  <li><a id="registrarse" href="{{ url_for('crear_usuario') }}">Registrar</a></li>
+</ul>
+{% endblock %}
+<!-- -> /Nav <- -->
+{% block contenedor_central %}
+<!-- -> Aside <- -->
+<aside class="colapsado">
+  <h2>Usuarios</h2>
+  <ul>
+    {% for persona in item_lista %}
+    <li>
+      <a href="/todo/{{ persona['nombre'] }}">{{ persona["nombre"] }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</aside>
+<!-- -> /Aside <- -->
+<!-- -> Main <- -->
+<main></main>
+<!-- -> /Main <- -->
 {% endblock %}
