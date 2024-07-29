@@ -1,2 +1,6 @@
 #Ignorar venv
 env
+
+#Ignorar algo mio
+backend/deprecado.txt
+frontend/plantillas-patron
