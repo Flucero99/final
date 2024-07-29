@@ -37,7 +37,7 @@ h6 {
   color: black;
 }
 
-.contenedor-principal {
+.contenedor-principal { /* Hecho */
   width: 900px;
   min-height: 500px;
   background-color: #8f411f;
@@ -50,11 +50,11 @@ h6 {
   align-items: center;
 }
 
-.lista-tareas {
+.lista-tareas { /* Hecho */
   width: 100%;
 }
 
-.tarea {
+.tarea { /* Hecho */
   color: black;
   background-color: #4837a3;
   width: 700px;
@@ -71,22 +71,22 @@ h6 {
   text-align: center;
 }
 
-.tarea.completada {
+.tarea.completada { /* Hecho */
   background-color: black;
 }
 
-p.completada {
+p.completada { /* Hecho */
   color: white;
   text-decoration: line-through;
   text-decoration-thickness: 5px;
   text-decoration-color: green;
 }
 
-.tarea p {
+.tarea p { /* Hecho */
   flex-grow: 1;
 }
 
-input {
+input { /* Hecho */
   width: 90%;
   height: 30px;
   font-size: 16px;
@@ -96,7 +96,7 @@ input {
   border-radius: 8px;
 }
 
-button.agregar {
+button.agregar { /* Hecho */
   width: 40%;
   height: 44px;
   font-size: 16px;
@@ -110,12 +110,12 @@ button.agregar {
   text-decoration: none;
 }
 
-button.agregar:hover {
+button.agregar:hover { /* Hecho */
   color: white;
   background-color: black;
 }
 
-button.borrar {
+button.borrar { /* Hecho */
   width: 44px;
   height: 44px;
   font-size: 16px;
@@ -128,12 +128,12 @@ button.borrar {
   cursor: pointer;
   text-decoration: none;
 }
-button.borrar:hover {
+button.borrar:hover { /* Hecho */
   color: red;
   background-color: black;
 }
 
-button.completar {
+button.completar { /* Hecho */
   width: 44px;
   height: 44px;
   font-size: 16px;
@@ -147,7 +147,7 @@ button.completar {
   /* align-self: flex-end; */
 }
 
-button.completar:hover {
+button.completar:hover { /* Hecho */
   color: green;
   background-color: black;
 }

@@ -1,13 +1,15 @@
 // ------------------------------------------------------ Declaraciones
 const input_ingresar = document.getElementById("ingresar-tarea");
 const lista_tareas = document.getElementById("lista-tareas");
+const boton_iniciar_sesion = document.getElementById("iniciar-sesion");
+const botones_completar = document.querySelectorAll("button.completar");
 const boton_agregar = document.querySelector(
-  ".contenedor-principal button.agregar"
+  "#contenedor-todo > button.agregar"
 );
 // ------------------------------------------------------ Funciones
 
 function agregar_tarea() {
-  // &#128465 -> Basurero y &#10003 -> Check mark
+  // &#128465; -> Basurero y &#10003; -> Check mark
   if (input_ingresar.value) {
     const [tarea, texto] = [
       document.createElement("div"),
@@ -23,8 +25,8 @@ function agregar_tarea() {
     boton_check.classList.add("completar");
     tarea.classList.add("tarea");
 
-    boton_borrar.innerHTML = `&#128465`;
-    boton_check.innerHTML = "&#10003";
+    boton_borrar.innerHTML = `&#128465;`;
+    boton_check.innerHTML = "&#10003;";
     texto.innerText = input_ingresar.value;
 
     tarea.appendChild(texto);
@@ -57,6 +59,16 @@ function borrar_tarea(e) {
   return 0;
 }
 
+function expandir_usuarios() {
+  let aside = document.querySelector("aside");
+  let nada_1 = document.querySelector(".nada-1");
+  let nada_2 = document.querySelector(".nada-2");
+  aside.classList.toggle("colapsado");
+  nada_1.classList.toggle("colapsado");
+  nada_2.classList.toggle("colapsado");
+  return 0;
+}
+
 // ------------------------------------------------------ Listeners
 function listener_input() {
   input_ingresar.addEventListener("keydown", (e) => {
@@ -76,16 +88,34 @@ function listener_boton_completar(boton_check) {
   boton_check.addEventListener("click", completar_tarea);
   return 0;
 }
+function listener_boton_completar_todos() {
+  for (const boton_check of botones_completar) {
+    boton_check.addEventListener("click", completar_tarea);
+  }
+  return 0;
+}
+
 function listener_boton_borrar(boton_borrar) {
   boton_borrar.addEventListener("click", borrar_tarea);
+  return 0;
+}
+
+function listener_boton_iniciar_sesion() {
+  boton_iniciar_sesion.addEventListener("click", expandir_usuarios);
   return 0;
 }
 
 // --------------------------------------------------------------------------------- Principal
 
 function main() {
-  listener_input();
-  listener_boton_agregar();
+  try {
+    // listener_input();
+    // listener_boton_agregar();
+    listener_boton_completar_todos();
+  } catch {}
+  try {
+    listener_boton_iniciar_sesion();
+  } catch {}
   // console.log(boton_agregar);
   return 0;
 }
